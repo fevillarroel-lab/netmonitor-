@@ -17,24 +17,25 @@ jobs:
       - name: Login a Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: gat0culia0
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # PASO 3: Build imagen app
       - name: Build imagen app
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-app:latest .
+          docker build -t gat0culia0/netmonitor-app:latest .
 
       # PASO 4: Build imagen nginx
       - name: Build imagen nginx
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-nginx:latest ./nginx
+          docker build -t gat0culia0/netmonitor-nginx:latest ./nginx
 
       # PASO 5: Push imágenes a Docker Hub
       - name: Push imágenes a Docker Hub
         run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-app:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-nginx:latest
+          docker push gat0culia0/netmonitor-app:latest
+          docker push gat0culia0/netmonitor-nginx:latest
+
       # PASO 6: Health Check HTTP (Prueba de infraestructura obligatoria)
       - name: Health Check HTTP
         run: |
