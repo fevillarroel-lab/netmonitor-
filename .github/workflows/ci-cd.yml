@@ -36,20 +36,20 @@ jobs:
           docker push gat0culia0/netmonitor-app:latest
           docker push gat0culia0/netmonitor-nginx:latest
 
-    # PASO 6: Health Check HTTP (Prueba de infraestructura obligatoria)
+   # PASO 6: Health Check HTTP (Prueba de infraestructura obligatoria)
       - name: Health Check HTTP
         run: |
-          curl -f http://54.210.85.12/
+          curl -f http://100.57.125.236/
 
       # PASO 7: Latencia de red (Prueba de infraestructura obligatoria)
       - name: Latencia de red
         run: |
-          curl -w '%{time_total}\n' -o /dev/null -s http://54.210.85.12/
+          curl -w '%{time_total}\n' -o /dev/null -s http://100.57.125.236/
 
       # PASO 8: Validación de puerto (Prueba de infraestructura obligatoria)
       - name: Validación de puerto
         run: |
-          nc -zv 54.210.85.12 80
+          nc -zv 100.57.125.236 80
       # PASO 9: Deploy a ECS
       - name: Deploy a ECS
         env:
