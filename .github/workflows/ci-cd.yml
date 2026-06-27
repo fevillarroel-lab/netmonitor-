@@ -36,21 +36,20 @@ jobs:
           docker push gat0culia0/netmonitor-app:latest
           docker push gat0culia0/netmonitor-nginx:latest
 
-      # PASO 6: Health Check HTTP (Prueba de infraestructura obligatoria)
+     # PASO 6: Health Check HTTP (Prueba de infraestructura obligatoria)
       - name: Health Check HTTP
         run: |
-          curl -f http://${{ secrets.EC2_PUBLIC_IP }}/
+          curl -f http://TU_IP_PUBLICA_DE_AWS/
 
       # PASO 7: Latencia de red (Prueba de infraestructura obligatoria)
       - name: Latencia de red
         run: |
-          curl -w '%{time_total}\n' -o /dev/null -s http://${{ secrets.EC2_PUBLIC_IP }}/
+          curl -w '%{time_total}\n' -o /dev/null -s http://TU_IP_PUBLICA_DE_AWS/
 
       # PASO 8: Validación de puerto (Prueba de infraestructura obligatoria)
       - name: Validación de puerto
         run: |
-          nc -zv ${{ secrets.EC2_PUBLIC_IP }} 80
-
+          nc -zv TU_IP_PUBLICA_DE_AWS 80
       # PASO 9: Deploy a ECS
       - name: Deploy a ECS
         env:
