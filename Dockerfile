@@ -7,8 +7,8 @@
 FROM python:3.11-slim
 
 # Metadatos de la imagen personalizados con tu autoría
-LABEL maintainer="fe.villaroelr@duocuc.cl"
-LABEL description="Net Monitor App — Monitoreo de infraestructura de red por TU NOMBRE"
+LABEL maintainer= "Felipe Ignacio Eduardo Villarroel Rivera"
+LABEL description="Net Monitor App — Monitoreo de infraestructura de red"
 LABEL version="1.0"
 
 # Variables de entorno (Provistas por el docente)
