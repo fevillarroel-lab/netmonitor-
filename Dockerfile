@@ -26,11 +26,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         netcat-openbsd \
     && rm -rf /var/lib/apt/lists/*
 
-# 3. Copiar e instalar dependencias Python primero (Optimización de Caché)
-COPY app/requirements.txt .
+# # 3. Copiar e instalar dependencias Python primero (Optimización de Caché)
+COPY app/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 4. Copiar el código fuente de la aplicación
+# # 4. Copiar el código fuente de la aplicación
 COPY app/ .
 
 # 5. Puerto solicitado (Provisto por el docente)
