@@ -23,7 +23,7 @@ jobs:
       # PASO 3: Build imagen app
       - name: Build imagen app
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-app:latest -t ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-app:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-app:latest .
 
       # PASO 4: Build imagen nginx
       - name: Build imagen nginx
@@ -34,9 +34,7 @@ jobs:
       - name: Push imágenes a Docker Hub
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-app:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-app:${{ github.sha }}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/netmonitor-nginx:latest
-
       # PASO 6: Health Check HTTP (Prueba de infraestructura obligatoria)
       - name: Health Check HTTP
         run: |
