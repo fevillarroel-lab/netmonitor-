@@ -50,11 +50,4 @@ jobs:
       - name: Validación de puerto
         run: |
           nc -zv 100.57.125.236 80
-      # PASO 9: Deploy a ECS
-      - name: Deploy a ECS
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-        run: |
-          aws ecs update-service --cluster netmonitor --service netmonitor-svc --force-new-deployment
+    
